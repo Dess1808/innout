@@ -17,4 +17,14 @@ class DataBase {
 
         return $conn;
     }
+
+    public static function getResultFromQuery($sql){
+        //connection
+        $conn = self::getConnection();
+        //query
+        $result = $conn->query($sql);
+        $conn->close();
+
+        return $result;
+    }
 }
