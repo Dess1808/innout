@@ -1,11 +1,15 @@
 <?php
 ini_set('display_errors', 1);
 
-require_once(dirname(__FILE__, 2) . "/src/config/database.php");
+//exports
+require_once(realpath(dirname(__FILE__, 2) . '/src/config/config.php'));
+require_once(realpath(dirname(__FILE__, 2) . '/src/models/User.php'));
 
-$result = DataBase::getResultFromQuery("SELECT * FROM users;");
+$user1 = new User([
+    'name'=> 'gabriel',
+    'email' => 'gabriel@email.com',
+]);
 
-while($row = $result->fetch_assoc()){
-    print_r($row);
-    echo "<br>";
-}
+print_r($user1);
+
+
