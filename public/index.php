@@ -7,15 +7,13 @@ require_once(realpath(dirname(__FILE__, 2) . '/src/models/User.php'));
 
 $user1 = new User([
     'name'=> 'gabriel',
-    'email' => 'gabriel@email.com',
+    'email' => 'gabriel@email.com'
 ]);
 
-//magic methods
-$user1->email = "gabrielmartins0898@gmail.com";
-echo $user1->email;
+// echo $user1->getSelect([
+//     'name' => 'gabriel', 
+//     'email' => 'gabrielmartins@gmail.com'], 
+//     "name, email"
+// );
 
-echo "<br>";
-
-print_r($user1);
-
-
+echo $user1->getSelect([]);

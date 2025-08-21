@@ -30,4 +30,37 @@ class Model{
     public function __set($key, $value){
         $this->values[$key] = $value;
     }
+
+
+    //select from database - test
+    public static function getSelect($filters = [], $columns = '*'){
+        return $sql = "SELECT {$columns} FROM "
+            . static::$tableName
+            . static::getFilter($filters) . ';';
+    }
+
+    //filters adicionado 'AND' aos filtros
+    public static function getFilter($filters){
+        $sql = '';
+        if (count($filters) > 0){
+            $sql = " WHERE 1 = 1";
+            foreach($filters as $column => $value){
+                $sql .= " AND {$column} = " . static::getFormatedValue($value);
+            }
+        }
+
+        return $sql;
+    }
+
+    //values' treatment
+    public static function getFormatedValue($value){
+        if (is_null($value) || $value === ''){
+            return "null";
+        } elseif (gettype($value) === 'string'){
+            return "'{$value}'";
+        } else {
+            return $value;
+        }
+    }
 }
+
