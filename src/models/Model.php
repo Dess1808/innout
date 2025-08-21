@@ -31,12 +31,38 @@ class Model{
         $this->values[$key] = $value;
     }
 
+    //push em array e mostrar no navegador 
+    public static function getResultFromDataBase($filters = [], $columns = '*'){
+        $objs = [];
+        
+        //receber resultado bruto sql 
+        $result = static::getSelect($filters, $columns);
+        if ($result){
+            //obtendo qual classe chamou o metodo 'getResultFromDataBase'
+            $classCalled = get_called_class();        
+            while($row = $result->fetch_assoc()){
+                //fazendo o push desta forma pos queremos que o array seja de objetos
+                array_push($objs, new $classCalled($row));
+            }    
+        }
 
-    //select from database - test
+        return $objs;
+    }
+
+
+    //select from database - retornando resultado sql
     public static function getSelect($filters = [], $columns = '*'){
-        return $sql = "SELECT {$columns} FROM "
+        $sql = "SELECT {$columns} FROM "
             . static::$tableName
             . static::getFilter($filters) . ';';
+        
+        $result = DataBase::getResultFromQuery($sql);
+
+        if ($result->num_rows > 0){
+            return $result;
+        } else {
+            return null;
+        }
     }
 
     //filters adicionado 'AND' aos filtros
