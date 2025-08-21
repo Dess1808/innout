@@ -10,6 +10,12 @@ $user1 = new User([
     'email' => 'gabriel@email.com',
 ]);
 
+//magic methods
+$user1->email = "gabrielmartins0898@gmail.com";
+echo $user1->email;
+
+echo "<br>";
+
 print_r($user1);
 
 

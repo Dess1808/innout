@@ -15,17 +15,19 @@ class Model{
         if ($arr){
             //pegando chave e valor do array associativo $arr
             foreach($arr as $key => $value){
-                $this->set($key, $value);
+                //magic methods
+                $this->$key = $value;
             }
         }
     }
 
     //set and gets
-    public function get($key){
+    //magic methods
+    public function __get($key){
         return $this->values[$key];
     }
 
-    public function set($key, $value){
+    public function __set($key, $value){
         $this->values[$key] = $value;
     }
 }
