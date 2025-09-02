@@ -31,7 +31,19 @@ class Model{
         $this->values[$key] = $value;
     }
 
-    //push em array e mostrar no navegador 
+
+    //-- specific methods
+
+    //get only user from DB
+    public static function getResultFromDataBaseOnly($filters = [], $columns = '*'){
+        $classCalled = get_called_class();
+        $result = static::getSelect($filters, $columns);
+        //return array inserted, values is a object from class called 
+        return $result ? new $classCalled($result->fetch_assoc()) : null;
+    }
+
+
+    //get all user selected
     public static function getResultFromDataBase($filters = [], $columns = '*'){
         $objs = [];
         
