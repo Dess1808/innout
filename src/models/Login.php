@@ -1,6 +1,6 @@
 <?php
 
-require_once(MODEL_PATH . '/User.php');
+loadModel('User');
 
 //autenticacao! no caso autenticar senha em banco
 class Login extends Model{

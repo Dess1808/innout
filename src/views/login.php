@@ -25,19 +25,21 @@
                         <input type="email" name="email" id="email"
                             class="form-control"
                             placeholder="Insira seu e-mail"
-                            autofocus>
+                            autofocus
+                            value="<?= isset($email) ? $email : '' ?>">
                     </div>  
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" name="password" id="password"
                             class="form-control"
-                            placeholder="Senha">
+                            placeholder="Senha"
+                            value="<?= isset($password) ? $password : '' ?>">
                     </div>
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-lg btn-primary">Entrar</button>
                 </div>
             </div>  
-        </form>    
+        </form>   
     </body>
 </html>

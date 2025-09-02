@@ -1,0 +1,23 @@
+<?php
+
+//loader Model 
+function loadModel($modelName){
+    require_once(MODEL_PATH . "/{$modelName}.php");
+}
+
+//loader View with trataments
+function loadView($viewName, $params = array()){
+
+    //tirando do array e colocando em variaveis!
+    if (count($params) > 0){
+        foreach($params as $key => $value){
+            if (strlen($key) > 0){
+                //variavel variavel
+                ${$key} = $value;
+            }
+        }
+    }
+
+    //carregando view login com variaveis tratadas !
+    require_once(VIEW_PATH . "/{$viewName}.php");
+}
