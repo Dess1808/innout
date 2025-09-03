@@ -20,6 +20,7 @@
                     <i class="icofont-runner-alt-1 ml-2"></i>
                 </div>
                 <div class="card-body">
+                    <?php include(TEMPLATE_PATH . '/messagens.php'); ?>
                     <div class="form-group">
                         <label for="email">E-mail</label>
                         <input type="email" name="email" id="email"

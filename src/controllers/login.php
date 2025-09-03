@@ -1,6 +1,8 @@
 <?php
 loadModel('Login');
 
+$exception = null;
+
 if (count($_POST) > 0){
     $loginUserCheck = new Login([
         'email' => $_POST['email'],
@@ -11,12 +13,12 @@ if (count($_POST) > 0){
     try{
         $result = $loginUserCheck->checkLogin();
         echo "User {$result->name} logged in";
-    } catch (Exception $e){
-        echo "Error validation user";
+    } catch (AppException $e){
+        $exception = $e;
     }
 }
 
-loadView('login', $_POST);
+loadView('login', $_POST + ['exception' => $exception]);
 
 
 
