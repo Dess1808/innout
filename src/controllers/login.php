@@ -13,7 +13,7 @@ if (count($_POST) > 0){
     try{
         $result = $loginUserCheck->checkLogin();
         echo "User {$result->name} logged in";
-    } catch (AppException $e){
+    } catch (AppException $e){ //primeira excecao lancada ele o try captura???
         $exception = $e;
     }
 }

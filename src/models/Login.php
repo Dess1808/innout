@@ -5,8 +5,28 @@ loadModel('User');
 //autenticacao! no caso autenticar senha em banco
 class Login extends Model{
        
+    public function checkLoginValidation(){
+        $errors = [];
+        
+        //validation email empty
+        if (!$this->email){
+            $errors['email'] = 'email not inserted';
+        } 
+
+        //validation password
+        if (!$this->password){
+            $errors['password'] = 'password not inserted';
+        }
+
+        //throw exception check
+        if (count($errors) > 0){
+            throw new ValidationException($errors);
+        }
+    }
+
     //check login
     public function checkLogin(){
+        $this->checkLoginValidation();
         //select from database
         $user = User::getResultFromDataBaseOnly(['email' => $this->email]);
 

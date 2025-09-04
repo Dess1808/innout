@@ -24,17 +24,23 @@
                     <div class="form-group">
                         <label for="email">E-mail</label>
                         <input type="email" name="email" id="email"
-                            class="form-control"
+                            class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>"
                             placeholder="Insira seu e-mail"
                             autofocus
                             value="<?= isset($email) ? $email : '' ?>">
+                        <div class="invalid-feedback">
+                                <?= isset($errors['email'])? $errors['email'] : '' ?>
+                        </div>
                     </div>  
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" name="password" id="password"
-                            class="form-control"
+                            class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>"
                             placeholder="Senha"
                             value="<?= isset($password) ? $password : '' ?>">
+                            <div class="invalid-feedback">
+                                <?= isset($errors['password']) ? $errors['password'] : '' ?>
+                            </div>
                     </div>
                 </div>
                 <div class="card-footer">
