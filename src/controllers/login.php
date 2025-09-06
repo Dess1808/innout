@@ -12,7 +12,7 @@ if (count($_POST) > 0){
     //usando try catch pos estamos utilizando throw no metodo checLogin
     try{
         $result = $loginUserCheck->checkLogin();
-        echo "User {$result->name} logged in";
+        header("Location: dayRecords.php");
     } catch (AppException $e){ //primeira excecao lancada ele o try captura???
         $exception = $e;
     }

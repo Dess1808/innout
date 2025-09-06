@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once(realpath(dirname(__FILE__, 2) . '/src/config/config.php'));
 
 $uri = urldecode(
-    //get only url, without params!
+    //get only url, without params only
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/comum.css">
     <link rel="stylesheet" href="assets/css/icofont.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
-    <title>Document</title>
+    <title>In N' Out</title>
 </head>
     <body>
         <form class="form-login" action="#" method="post">
