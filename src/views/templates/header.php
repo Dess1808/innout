@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/comum.css">
     <link rel="stylesheet" href="assets/css/icofont.min.css">
-    <link rel="stylesheet" href="assets/css/template.css">
+    <link rel="stylesheet" href="assets/css/templateHome.css">
     <title>In N' Out</title>
 </head>
-    <body>
+    <body class="">
         <header class="header">
             <!-- logo -->
             <div class="logo">

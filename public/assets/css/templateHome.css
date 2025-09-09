@@ -1,0 +1,49 @@
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "sidebar footer";
+    height: 100vh;
+    margin: 0;
+}
+
+body.hide-sidebar{
+    display: grid;
+    grid-template-columns: 1fr;
+    /*grid-template-rows: 60px 1fr 60px; - como o navegador sabe o tamanhos das linhas, se estamos carregando um nova classe*/ 
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer";
+    height: 100vh;
+    margin: 0;
+}
+
+header.header {
+    grid-area: header; 
+}
+
+
+aside.sidebar {
+    grid-area: sidebar;
+}
+
+.hide-sidebar aside.sidebar {
+    display: none;
+}
+
+aside.hide-sidebar{
+    display: none;
+}
+
+main.content {
+    grid-area: content;
+}
+
+footer.footer {
+    grid-area: footer;
+}
+
