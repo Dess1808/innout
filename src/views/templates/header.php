@@ -21,10 +21,26 @@
             </div>
 
             <!-- menu -->
-             <div class="menu-toggle mx-3">
+            <div class="menu-toggle mx-3">
                 <i class="icofont-navigation-menu"></i>
-             </div>
+            </div>
 
-             <!-- spacer? -->
-              <div class="spacer"></div>
+            <!-- spacer? -->
+            <div class="spacer"></div>
+
+            <!-- dropdown button -->
+            <div class="dropdown">
+                <div class="dropdown-button">
+                    <i class="icofont-simple-down"></i>
+                </div>
+                <div class="dropdown-content">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="logout.php">
+                                <i class="icofont-logout mr-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </header>
