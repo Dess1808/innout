@@ -25,19 +25,21 @@
                 <i class="icofont-navigation-menu"></i>
             </div>
 
-            <!-- spacer? -->
+            <!-- spacer -->
             <div class="spacer"></div>
 
             <!-- dropdown button -->
             <div class="dropdown">
-                <div class="dropdown-button">
-                    <i class="icofont-simple-down"></i>
+                <div class="dropdown-button ml-2">
+                    <span class="">Usuario Mock</span>
+                    <i class="icofont-simple-down mx-2"></i>
                 </div>
                 <div class="dropdown-content">
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="logout.php">
-                                <i class="icofont-logout mr-2"></i>
+                                <i class="icofont-logout mx-2"></i>
+                                Sair
                             </a>
                         </li>
                     </ul>
