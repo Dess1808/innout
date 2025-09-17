@@ -155,7 +155,15 @@ main.content {
     grid-area: content;
 }
 
+/* footer */
 footer.footer {
     grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #222;
+    color: white;
+    padding-right: 20px;
+    font-size: 1.2rem;
 }
 
