@@ -104,6 +104,8 @@ header.header .dropdown-content a:hover{
     background-color: rgba(0,0,0, .05);
 }
 
+/* side menu  */
+
 aside.sidebar {
     grid-area: sidebar;
     display: flex;
@@ -139,6 +141,7 @@ aside.sidebar .menu ul.nav-list li.nav-item a{
     text-decoration: none;
 }
 
+/* hiden sidebar */
 
 body.hide-sidebar aside.sidebar {
     display: none;

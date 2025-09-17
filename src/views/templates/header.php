@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/templateHome.css">
     <title>In N' Out</title>
 </head>
-    <body class="">
+    <body>
         <header class="header">
             <!-- logo -->
             <div class="logo">
