@@ -13,7 +13,7 @@ if (count($_POST) > 0){
     try{
         $result = $loginUserCheck->checkLogin();
         header("Location: dayRecords.php");
-    } catch (AppException $e){ //primeira excecao lancada ele o try captura???
+    } catch (AppException $e){
         $exception = $e;
     }
 }
