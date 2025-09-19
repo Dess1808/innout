@@ -1,6 +1,6 @@
 
 <main class="content">
-    <div class="content-little mb-4">
+    <div class="content-title mb-4">
         <i class="icon icofont-check-alt mr-2"></i>
         <div>
             <h1>Registrar Ponto</h1>
@@ -16,12 +16,12 @@
         </div>
         <div class="card-body">
             <div class="d-flex m-2 justify-content-around">
-                <span>Entrada 1: ---</span>
-                <span>Saida 1: ---</span>
+                <span class="record-text">Entrada 1: ---</span>
+                <span class="record-text">Saida 1: ---</span>
             </div>
             <div class="d-flex m-2 justify-content-around">
-                <span>Entrada 2: ---</span>
-                <span>Saida 2: ---</span>
+                <span class="record-text">Entrada 2: ---</span>
+                <span class="record-text">Saida 2: ---</span>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-center">

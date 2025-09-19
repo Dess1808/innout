@@ -1,13 +1,14 @@
 body {
     display: grid;
     grid-template-columns: 250px 1fr;
-    grid-template-rows: 64px 1fr 64px;
+    grid-template-rows: 64px 1fr 50px;
     grid-template-areas: 
         "header header"
         "sidebar content"
         "sidebar footer";
     height: 100vh;
     margin: 0;
+    background-color: #ddd;
 }
 
 body.hide-sidebar{
@@ -106,7 +107,6 @@ header.header .dropdown-content a:hover{
 }
 
 /* side menu  */
-
 aside.sidebar {
     grid-area: sidebar;
     display: flex;
@@ -181,8 +181,43 @@ aside.hide-sidebar{
     display: none;
 }
 
+/* content */
 main.content {
     grid-area: content;
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+main.content .content-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+main.content .content-title .icon {
+    font-size: 3rem;
+}
+
+main.content .content-title h1{
+    color: #444;
+    font-weight: 300;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+main.content .content-title h2{
+    color: #888;
+    font-weight: 300;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+main.content .card .card-body .record-text {
+    font-size: 1.5rem;
 }
 
 /* footer */
