@@ -1,7 +1,10 @@
 <?php
 loadModel('Login');
+session_start();
 
 $exception = null;
+
+//controller login e chamado pelo "post"?
 
 if (count($_POST) > 0){
     $loginUserCheck = new Login([
@@ -11,7 +14,9 @@ if (count($_POST) > 0){
 
     //usando try catch pos estamos utilizando throw no metodo checLogin
     try{
-        $result = $loginUserCheck->checkLogin();
+        $user = $loginUserCheck->checkLogin();
+        //colocar usuario em sessao
+        $_SESSION['user'] = $user;
         header("Location: dayRecords.php");
     } catch (AppException $e){
         $exception = $e;
