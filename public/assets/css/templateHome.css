@@ -64,6 +64,7 @@ header.header .dropdown:hover{
     background-color: rgba(0,0,0, .1);
 }
 
+
 header.header .dropdown-button{
     display: flex;
     justify-content: center;
@@ -72,6 +73,12 @@ header.header .dropdown-button{
     font-size: 1.1rem;
     color: white;
     cursor: pointer;
+}
+
+header.header .dropdown-button .avatar{
+    height: 60%;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 header.header .dropdown-content{
