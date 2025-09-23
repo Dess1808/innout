@@ -1,4 +1,6 @@
 <?php
+setlocale(LC_TIME, 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Manaus');
 ini_set('display_errors', 1);
 
 //exports

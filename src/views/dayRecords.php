@@ -7,12 +7,14 @@
             'Mantenha seu ponto consistente!',
             'icofont-check-alt'
         );
+
+        // add messages!!
     ?>
 
     <!-- card css bootstrap -->
     <div class="card">
         <div class="card-header">
-            <h3>10 de Janeiro de 2025</h3>
+            <h3><?=$today?></h3>
             <p class="mb-0">Os batimentos efeturados hoje</p>
         </div>
         <div class="card-body">

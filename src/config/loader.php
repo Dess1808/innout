@@ -44,3 +44,18 @@ function loadTemplateView($viewName, $params = array()){
 function renderTitle($title, $subtitle, $icon = null){
     require_once(TEMPLATE_PATH . "/title.php");
 }
+
+//current time
+function currentTime($date){
+    //moderno e com set linguagem
+    $formatted = new IntlDateFormatter(
+        'pt_BR', //linguagem
+        IntlDateFormatter::FULL, //formato de data (segunda, 22 de setembro de 2025)
+        IntlDateFormatter::NONE, //hora
+        'America/Manaus', //local
+        IntlDateFormatter::GREGORIAN, //calendario
+        "d 'de' MMMM 'de' yyyy" //string format
+    );
+
+    return $formatted->format($date);
+}
