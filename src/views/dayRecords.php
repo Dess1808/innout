@@ -1,12 +1,13 @@
 
 <main class="content">
-    <div class="content-title mb-4">
-        <i class="icon icofont-check-alt mr-2"></i>
-        <div>
-            <h1>Registrar Ponto</h1>
-            <h2>Matenha seu ponto consistente!</h2>
-        </div>
-    </div>
+    <!-- call function renderTitle -->
+    <?php 
+        renderTitle(
+            'Registrar Ponto',
+            'Mantenha seu ponto consistente!',
+            'icofont-check-alt'
+        );
+    ?>
 
     <!-- card css bootstrap -->
     <div class="card">
