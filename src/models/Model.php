@@ -77,13 +77,31 @@ class Model{
         }
     }
 
+    //INSERT in database
+    public function save(){
+        $sql = "INSERT INTO " . static::$tableName . " (" 
+            . implode(",", static::$columns) . ") VALUES (";
+
+        //add atributos de instancia 
+        foreach(static::$columns as $col){
+            $sql .= self::getFormatedValue($this->$col) . ",";
+        }
+
+        //replace last value
+        $sql[strlen($sql - 1)] = ")";
+
+        $id = DataBase::executeSQL($sql);
+        $this->id = $id;
+    }
+
+
     //filters adicionado 'AND' aos filtros
     public static function getFilter($filters){
         $sql = '';
         if (count($filters) > 0){
             $sql = " WHERE 1 = 1";
             foreach($filters as $column => $value){
-                $sql .= " AND {$column} = " . static::getFormatedValue($value);
+                $sql .= " AND {$column} = " . self::getFormatedValue($value);
             }
         }
 

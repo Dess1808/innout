@@ -175,7 +175,7 @@ aside.sidebar .sidebar-widgets .sidebar-widget .icon{
 
 aside.sidebar .sidebar-widgets .division{
     widows: 80%;
-    border: solid 1px #eee;
+    /* border: solid 1px #eee; */
 }
 
 /* hiden sidebar */

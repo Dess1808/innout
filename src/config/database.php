@@ -27,4 +27,22 @@ class DataBase {
 
         return $result;
     }
+
+    //verificar se vai funcionar!
+    //auxiliar a executar insertion 
+    public static function executeSQL($sql){
+        $conn = self::getConnection();
+
+        //executando sql
+        $conn->query($sql);
+
+        if ($conn->connect_error){
+            throw new Exception($conn->connect_error);
+        }
+
+        $id = $conn->insert_id;
+        $conn->close();
+
+        return $id;
+    }
 }
