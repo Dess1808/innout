@@ -87,10 +87,15 @@ class Model{
             $sql .= self::getFormatedValue($this->$col) . ",";
         }
 
-        //replace last value
-        $sql[strlen($sql - 1)] = ")";
+        //replace last value and semicolo, verificar !!!
+        $sql[strlen($sql) - 1 ] = ')';
+        $sql .= ';';
 
         $id = DataBase::executeSQL($sql);
+
+        //O objetivo de pegar o id auto_increment do banco e setar no objeto atual
+        //deve ser basicamento para termos acesso esse numero pela instancia 
+        //ainda nao sei para que usariamos, mais a informacao esta ai!!
         $this->id = $id;
     }
 

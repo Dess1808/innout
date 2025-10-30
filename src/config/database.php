@@ -40,9 +40,10 @@ class DataBase {
             throw new Exception($conn->connect_error);
         }
 
+        //id auto_increment from dateBase
         $id = $conn->insert_id;
         $conn->close();
-
+        
         return $id;
     }
 }
