@@ -12,4 +12,29 @@ class workingHours extends Model{
         'time4',
         'worked_time'
     ];
+
+
+    public static function loadFromUserDate($userId, $workDate){
+        //searsh only registry from dataBase
+        $registry = self::getResultFromDataBaseOnly([
+            'user_id' => $userId, 
+            'work_date' => $workDate
+        ]);
+
+
+        //registry == null
+        if (!$registry){
+            $registry = new workingHours([
+                'user_id' => $userId,
+                'work_date' => $workDate,
+                'time1' => null,
+                'time2' => null,
+                'time3' => null,
+                'time4' => null,
+                'worked_time' => 0
+            ]);
+        }
+
+        return $registry;
+    }    
 }

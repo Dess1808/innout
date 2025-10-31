@@ -9,6 +9,7 @@
         );
 
         // add messages!!
+    
     ?>
 
     <!-- card css bootstrap -->
@@ -19,12 +20,12 @@
         </div>
         <div class="card-body">
             <div class="d-flex m-2 justify-content-around">
-                <span class="record-text">Entrada 1: ---</span>
-                <span class="record-text">Saida 1: ---</span>
+                <span class="record-text">Entrada 1: <?= $userRecords->time1 ?? '---'?></span>
+                <span class="record-text">Saida 1: <?= $userRecords->time2 ?? '---'?></span>
             </div>
             <div class="d-flex m-2 justify-content-around">
-                <span class="record-text">Entrada 2: ---</span>
-                <span class="record-text">Saida 2: ---</span>
+                <span class="record-text">Entrada 2: <?= $userRecords->time3 ?? '---'?></span>
+                <span class="record-text">Saida 2: <?= $userRecords->time4 ?? '---'?></span>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
