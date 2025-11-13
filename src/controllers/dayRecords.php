@@ -6,8 +6,8 @@ loadModel('workingHours');
 
 $dataFormated = currentTime((new DateTime())->getTimestamp());
 
+//id informations
 $user = $_SESSION['user'];
-
 $userRecords = workingHours::loadFromUserDate($user->id, date('Y-m-d'));
 
 // render view

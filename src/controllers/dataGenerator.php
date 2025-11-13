@@ -52,6 +52,32 @@ function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate){
 }
 
 //population tables working hours
+//description populationWorkingHours:
+/*
+    Gerando templates de acordo com parametros informados
+        $userId - id do usuario vindo da sessão
+        $initialDate - primeiro dia da jornada de trabalho, deve ser igual ou menor ao dia atual
+        $regularRate - valor de 0 a 100, probabilidade de vir um dia regular
+        $extraRate - valor de 0 a 100 , probabilidade de vir um dia com hora extra
+        $lazyRate - valor de 0 a 100, probabilidade de vir um dia com saida mais cedo
+    
+    objetivo function:
+        recebe o dia informado inicialmente, pega o dia atual para ser usado como parametro de parada
+        da função, pois a mesma repete enquanto o valor inicial for menor ou igual ao dia atual
+        
+        Os parametro $userId e $initialDate são atribuidos ao array $columns para posteriormente serem 
+        usados como parametros no objeto "WorkingHours"
+
+        e feito o teste em loop while, se o dia atual e igual ou menor que o dia de hoje, se sim
+        e verificado se é um dia de final de semana, senão, a variavel $template recebe vinda de 
+        "getDayTemplateByOdds" um template. Faz um merge depois com $columns, com o $columns finalizado 
+        e feito a instanciação de um objeto do tipo WorkingHours com os parametros de $columns, $columns sendo um array
+        chave valor, depois e chamado o metodo "save()" para fazer a inserção desses valores no banco, e como retorno
+        , é retornando o valor do Id do usuario inserido. Para finalizar esse while e feito o incremento para o proximo dia 
+        , pois precisamos desse valor de batimento de hora para o rage de dias calculados.
+
+
+*/
 function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate, $lazyRate){
     $currentDate = $initialDate;
     $today = new DateTime();
@@ -69,7 +95,7 @@ function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate,
 
         //next day
         $currentDate = nextDay($currentDate)->format('Y-m-d');
-        $columns['work_date'] = $currentDate;
+        $columns['work_date'] = $currentDate; 
     }
 }
 
