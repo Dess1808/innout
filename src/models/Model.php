@@ -77,8 +77,8 @@ class Model{
         }
     }
 
-    //INSERT in database
-    public function save(){
+    //INSERT in database data generator
+    public function insertFromDataGenerator(){
         $sql = "INSERT INTO " . static::$tableName . " (" 
             . implode(",", static::$columns) . ") VALUES (";
 
@@ -89,7 +89,7 @@ class Model{
 
         //replace last value and semicolo, verificar !!!
         $sql[strlen($sql) - 1 ] = ')';
-        $sql .= ';';
+        //$sql .= ';';
 
         $id = DataBase::executeSQL($sql);
 
@@ -99,6 +99,23 @@ class Model{
         $this->id = $id;
     }
 
+    //UPDATE FROM data generator
+    /*
+    description updateFromDataGenerator
+        Função que irá fazer o update, é feita a construção do sql em php, utilizando 
+        foreach para inserir os campos e seus valores, depois e feito o update com a função
+        estática executeSql()
+    */
+    public function updateFromDataGenerator(){
+        $sql = "UPDATE " . static::$tableName . "SET ";
+        foreach(static::$columns as $col){
+            $sql = " {$col} = ". static::getFormatedValue($this->$col) . ",";
+        }
+
+        $sql[strlen($sql) - 1 ] = ' ';
+        $sql = "WHERE id = {$this->id}";
+        DataBase::executeSQL($sql);
+    }
 
     //filters adicionado 'AND' aos filtros
     public static function getFilter($filters){

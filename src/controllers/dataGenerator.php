@@ -90,7 +90,7 @@ function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate,
             $columns = array_merge($columns, $template);
             //intancia 
             $workingHours = new workingHours($columns);
-            $workingHours->save();
+            $workingHours->insertFromDataGenerator();
         }
 
         //next day
