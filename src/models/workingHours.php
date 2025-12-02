@@ -15,7 +15,7 @@ class workingHours extends Model{
 
 
     public static function loadFromUserDate($userId, $workDate){
-        //searsh only registry from dataBase
+        //search only registry from dataBase
         $registry = self::getResultFromDataBaseOnly([
             'user_id' => $userId, 
             'work_date' => $workDate
@@ -36,5 +36,53 @@ class workingHours extends Model{
         }
 
         return $registry;
-    }    
+    }   
+    
+    
+    /*
+        getNextTime()
+        description: obter o proximo time para o batimento de ponto.
+        obs: pertecente a instancia, nao estatico
+        assunto: verificar qual batimento precisar ser atribuido no momento em que for chamado!
+        retorna a string da coluna que deve ser atribuida um time, se todas tiverem ja preenchidas
+        retorna null
+    */ 
+    public function getNextTime(){
+        if (!$this->time1) return 'time1';
+        if (!$this->time2) return 'time2';
+        if (!$this->time3) return 'time3';
+        if (!$this->time4) return 'time4';
+        return null;
+    }
+
+    /*
+        innout($time)  
+        description: atribuir um time na banco de dados, tabela workingHours
+        assunto: recebe um time ou nao, se nao, retornar uma execption ao sistema, informando 
+        o usuario que todos o batimento ja foram feitos, se sim, atribui na tabela workingHours o novo 
+        batimento.
+        tecnico: Recebe um parametro string time -> "08:00:00" ou seja, um valor em hora no formato \
+        de string. E feito
+    */ 
+    public function innout($time){
+        $timeColumn = $this->getNextTime();
+    
+        //attention
+        if (!$timeColumn){
+            throw new AppException("you've alredy done all four clock in for the day!");
+        }
+
+        /*
+        Quando chamarmos uns dos metodos "insertFrom.. ou updateFrom.." que precisar ser setado no 
+        atributo time1, time2... vai esta "atualizado" para uso!!!
+        */
+        $this->$timeColumn = $time;
+ 
+        //if seted, update, if not, insert
+        if (!$this->id){
+            $this->insertFromDataGenerator();
+        } else {
+            $this->updateFromDataGenerator();
+        }
+    }
 }

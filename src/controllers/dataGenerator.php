@@ -103,5 +103,3 @@ function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate,
 
 //teste
 populationWorkingHours(1, date('Y-m-1'), 70, 20, 10);
-populationWorkingHours(3, date('Y-m-1'), 20, 75, 5);
-populationWorkingHours(4, date('Y-m-1'), 20, 10, 75);

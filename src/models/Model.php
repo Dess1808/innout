@@ -80,23 +80,18 @@ class Model{
     //INSERT in database data generator
     public function insertFromDataGenerator(){
         $sql = "INSERT INTO " . static::$tableName . " (" 
-            . implode(",", static::$columns) . ") VALUES (";
+            . implode(", ", static::$columns) . ") VALUES (";
 
         //add atributos de instancia 
         foreach(static::$columns as $col){
-            $sql .= self::getFormatedValue($this->$col) . ",";
+            $sql .= self::getFormatedValue($this->$col) . ", ";
         }
 
         //replace last value and semicolo, verificar !!!
-        $sql[strlen($sql) - 1 ] = ')';
-        //$sql .= ';';
+        $sql[strlen($sql) - 2] = ')';
+        $sql .= ';';
 
-        $id = DataBase::executeSQL($sql);
-
-        //O objetivo de pegar o id auto_increment do banco e setar no objeto atual
-        //deve ser basicamento para termos acesso esse numero pela instancia 
-        //ainda nao sei para que usariamos, mais a informacao esta ai!!
-        $this->id = $id;
+        DataBase::executeSQL($sql);
     }
 
     //UPDATE FROM data generator
@@ -107,13 +102,14 @@ class Model{
         estática executeSql()
     */
     public function updateFromDataGenerator(){
-        $sql = "UPDATE " . static::$tableName . "SET ";
+        $sql = "UPDATE " . static::$tableName . " SET ";
         foreach(static::$columns as $col){
-            $sql = " {$col} = ". static::getFormatedValue($this->$col) . ",";
+            $sql .= " {$col} = ". static::getFormatedValue($this->$col) . ",";
         }
-
-        $sql[strlen($sql) - 1 ] = ' ';
-        $sql = "WHERE id = {$this->id}";
+ 
+        $sql[strlen($sql) - 1] = ' ';
+        $sql .= "WHERE user_id = {$this->user_id};";
+        
         DataBase::executeSQL($sql);
     }
 
