@@ -9,9 +9,16 @@ $user = $_SESSION['user'];
 $userRecords = workingHours::loadFromUserDate($user->id, date('Y-m-d'));
 
 
-//times
-$currentTime = date('H:i:s', time());
-$userRecords->innout($currentTime);
+try {
+    //times
+    $currentTime = date('H:i:s', time());
+    $userRecords->innout($currentTime);
+
+    addSuccessMsg('Success insert!');
+
+} catch(AppException $e){
+    addErrorMsg($e->getMessage());
+}
 
 header('Location: dayRecords.php');
 

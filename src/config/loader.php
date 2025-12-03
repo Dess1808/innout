@@ -45,6 +45,11 @@ function renderTitle($title, $subtitle, $icon = null){
     require_once(TEMPLATE_PATH . "/title.php");
 }
 
+//render messages
+function renderMessagens() {
+    require_once(TEMPLATE_PATH . "/messagens.php");
+}
+
 //current time
 function currentTime($date){
     //moderno e com set linguagem

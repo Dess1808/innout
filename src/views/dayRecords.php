@@ -1,6 +1,7 @@
 
 <main class="content">
-    <!-- call function renderTitle -->
+    
+    <!-- call function renderTitle and messagens -->
     <?php 
         renderTitle(
             'Registrar Ponto',
@@ -9,6 +10,7 @@
         );
 
         // add messages!!
+        renderMessagens();
     ?>
 
     <!-- card css bootstrap -->

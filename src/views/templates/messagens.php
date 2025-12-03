@@ -1,9 +1,16 @@
 <?php
-    $errors = [];
-
     //variavel variavel vindo do tratamento do load, transforma qualquer array chave/valor em 
     //variavel!!!
-    if (isset($exception)){
+
+    $errors = [];
+
+    //success or erro clock in, clock out
+    if (isset($_SESSION['message'])){
+        $message = $_SESSION['message'];
+        unset($_SESSION['message']);
+
+        //demais exceptions!!!!
+    } elseif (isset($exception)){
         $message = [
             'type' => 'error',
             'message' => $exception->getMessage()
@@ -15,7 +22,6 @@
         }
     }
 
-
     //alert type
     $alertType = '';
 
@@ -23,16 +29,15 @@
         if ($message['type'] === 'error'){
             $alertType = 'alert-danger';
         } else {
-            $alertType = 'sucess';
+            $alertType = 'alert-success';
         }
     }
 
 ?>
 
+<!-- show in screen -->
 <?php if(isset($message)): ?>
     <div class="my-3 alert <?=$alertType?>" role="alert">
         <?=$message['message']?>
     </div>
 <?php endif?>
-
-
