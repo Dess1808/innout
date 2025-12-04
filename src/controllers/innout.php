@@ -11,7 +11,13 @@ $userRecords = workingHours::loadFromUserDate($user->id, date('Y-m-d'));
 
 try {
     //times
-    $currentTime = date('H:i:s', time());
+    // $currentTime = date('H:i:s', time());
+
+    // forced time session simulation --test--
+    if ($_POST['forcedTime']){
+        $currentTime = $_POST['forcedTime'];
+    }
+
     $userRecords->innout($currentTime);
 
     addSuccessMsg('Success insert!');

@@ -36,4 +36,10 @@
             </a>
         </div>
     </div>
+
+    <!-- forcend time --test-- -->
+     <form action="innout.php" method="post">
+        <input type="text" name="forcedTime">
+        <button>send</button>
+     </form>
 </main>
