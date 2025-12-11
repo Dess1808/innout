@@ -1,14 +1,10 @@
 <?php
 
 //controller of test
+loadModel('workingHours');
 
-$d1 = DateInterval::createFromDateString('10 hours');
-$d2 = DateInterval::createFromDateString('14 hours');
+$wh = workingHours::loadFromUserDate(4, date('Y-m-d'));
 
-$result = subtractIntervals($d1, $d2);
-print_r($result);
-echo "<br>";
+$interval = $wh->getWorkedInterval();
 
-print_r(getDateFromInterval($result));
-echo "<br>";
-
+print_r($interval->format('%H:%I:%S'));
