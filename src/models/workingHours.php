@@ -79,7 +79,8 @@ class workingHours extends Model{
         $this->$timeColumn = $time;
  
         //if seted, update, if not, insert
-        //aqui utilizando 
+        //aqui utilizando
+        //"$this->id" chave retornando do banco
         if (!$this->id){
             $this->insertFromDataGenerator();
         } else {

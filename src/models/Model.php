@@ -106,10 +106,17 @@ class Model{
         foreach(static::$columns as $col){
             $sql .= " {$col} = ". static::getFormatedValue($this->$col) . ",";
         }
- 
+
+        //duplicate entry - 1-2026-01-21
+        /*
+        E preciso utilizar o 'and' no where, pos sao duas chaves que definimos 
+        contraint no sql, pos o banco estava procurando apenas por uma chave, em vez
+        das duas
+        */
+
         $sql[strlen($sql) - 1] = ' ';
-        $sql .= "WHERE user_id = {$this->user_id};";
-        
+        $sql .= "WHERE user_id = {$this->user_id} AND work_date = '{$this->work_date}';";
+
         DataBase::executeSQL($sql);
     }
 
