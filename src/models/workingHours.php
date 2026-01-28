@@ -114,6 +114,47 @@ class workingHours extends Model{
         return sumIntervals($morning, $afternoo);
     }
 
+    //lunch interval calc
+    function getLunchInterval() {
+        [, $t2, $t3,] = $this->getTime();
+
+        //valor zerado
+        $breakValueTotal = new DateInterval('PT0S');
+
+        if ($t2) $breakValueTotal = $t2->diff(new DateTime());
+        if ($t3) $breakValueTotal = $t2->diff($t3);
+
+        return $breakValueTotal;
+
+    }
+
+    //exit calc
+    /*
+        calculo do dia inteiro trabalhado mais a hora de almoço, deve totalizar 8h.
+        8h horas pós e necessário para o calculo está certo, e somada a hora de entrada +
+        a hora do almoço para dar uma "estimativa" do horário da saída, se caso, o batimento 
+        da saido ainda não estive efetuado, o sistema deve mostrar a estimativa da saida.
+
+        detalhes: horário de entrada + 8h padrão + hora do almoço = estimativa da saida'
+    */
+    function getExitTime() {
+        [$t1, , , $t4] = $this->getTime();
+
+        //criando um date interval apartir de um metodo estatico
+        $workday = DateInterval::createFromDateString('8 hours');
+
+
+        //testar---- urgente 
+        if (!$t1) {
+            return (new DateTimeImmutable())->add($workday);
+        } elseif ($t4) {
+            return $t4;
+        } else {
+            $totalWorkDay = sumIntervals($workday, $this->getLunchInterval());
+
+            return $t1->add($totalWorkDay);
+        }
+    }
 
     //converter timestamp para cada time
     private function getTime() {
