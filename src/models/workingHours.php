@@ -107,7 +107,7 @@ class workingHours extends Model{
         */
 
         if ($t1) $morning = $t1->diff(new DateTime());
-        if ($t2) $morning = $t1->diff($t2);
+        if ($t2) $morning = $t1->diff($t2); 
         if ($t3) $afternoo = $t3->diff(new DateTime());
         if ($t4) $afternoo = $t3->diff($t4);
 
@@ -135,7 +135,7 @@ class workingHours extends Model{
         a hora do almoço para dar uma "estimativa" do horário da saída, se caso, o batimento 
         da saido ainda não estive efetuado, o sistema deve mostrar a estimativa da saida.
 
-        detalhes: horário de entrada + 8h padrão + hora do almoço = estimativa da saida'
+        detalhes: 8h a partir da hora atual + hora do almoço = "estimativa da saida"
     */
     function getExitTime() {
         [$t1, , , $t4] = $this->getTime();
@@ -143,8 +143,7 @@ class workingHours extends Model{
         //criando um date interval apartir de um metodo estatico
         $workday = DateInterval::createFromDateString('8 hours');
 
-
-        //testar---- urgente 
+        //testar
         if (!$t1) {
             return (new DateTimeImmutable())->add($workday);
         } elseif ($t4) {

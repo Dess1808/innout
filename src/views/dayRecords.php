@@ -21,14 +21,14 @@
         </div>
         <div class="card-body">
             <div class="d-flex m-2 justify-content-around">
-                <span class="record-text">Entrada 1: <?= $userRecords->time1 ?? '---'?></span>
-                <span class="record-text">Saida 1: <?= $userRecords->time2 ?? '---'?></span>
+                <span class="record-text">Entrada 1: <?= $workingHours->time1 ?? '---'?></span>
+                <span class="record-text">Saida 1: <?= $workingHours->time2 ?? '---'?></span>
             </div>
             <div class="d-flex m-2 justify-content-around">
-                <span class="record-text">Entrada 2: <?= $userRecords->time3 ?? '---'?></span>
-                <span class="record-text">Saida 2: <?= $userRecords->time4 ?? '---'?></span>
+                <span class="record-text">Entrada 2: <?= $workingHours->time3 ?? '---'?></span>
+                <span class="record-text">Saida 2: <?= $workingHours->time4 ?? '---'?></span>
             </div>
-        </div>
+        </div>  
         <div class="card-footer d-flex justify-content-center">
             <a href="innout.php" class="btn btn-success btn-lg">
                 <i class="icofont-check mr-1"></i>

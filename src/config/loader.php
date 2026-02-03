@@ -33,7 +33,14 @@ function loadTemplateView($viewName, $params = array()){
             }
         }
     }
-    
+
+
+    //id informations user registers
+    $user = $_SESSION['user'];
+    $workingHours = workingHours::loadFromUserDate($user->id, date('Y-m-d'));
+    $workedInterval = $workingHours->getWorkedInterval()->format('%H:%I:%S');
+    $workedExit = $workingHours->getExitTime()->format('H:i:s');
+
     require_once(TEMPLATE_PATH . "/header.php");
     require_once(TEMPLATE_PATH . "/leftMenu.php");
     require_once(VIEW_PATH . "/{$viewName}.php");
