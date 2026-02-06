@@ -90,7 +90,7 @@ class Model{
         //replace last value and semicolo, verificar !!!
         $sql[strlen($sql) - 2] = ')';
         $sql .= ';';
-
+        
         DataBase::executeSQL($sql);
     }
 

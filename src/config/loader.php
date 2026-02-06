@@ -40,6 +40,7 @@ function loadTemplateView($viewName, $params = array()){
     $workingHours = workingHours::loadFromUserDate($user->id, date('Y-m-d'));
     $workedInterval = $workingHours->getWorkedInterval()->format('%H:%I:%S');
     $workedExit = $workingHours->getExitTime()->format('H:i:s');
+    $activeClock = $workingHours->getActiveClock();
 
     require_once(TEMPLATE_PATH . "/header.php");
     require_once(TEMPLATE_PATH . "/leftMenu.php");

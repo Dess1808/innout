@@ -56,6 +56,29 @@ class workingHours extends Model{
     }
 
     /*
+        getActiveClock()
+        description: método que irá retornar qual time não está batido, com esta informações podemos
+        altrar o comportamentos dos relogios de "horas trabalhadas" e "hora de saida"
+        
+        Detalhe: o valores de time1 e tim3 precisam está vazios para atualizar corretamente a 
+        hora de saida. Já os valores time2 e time4 precisam esta vazio para que a "hora trabalhada" seja
+        atualizada corretamente
+    */
+
+        public function getActiveClock() {
+            $nextTime = $this->getNextTime();
+
+            //contador de "horas trabalhadas" ativo
+            if ($nextTime == 'time1' || $nextTime == 'time3') {
+                return 'exitTime';
+            } elseif ($nextTime == 'time2' || $nextTime == 'time4') {
+                return 'workedInterval';
+            } else {
+                return null;
+            }
+        }
+
+    /*
         innout($time)  
         description: atribuir um time na banco de dados, tabela workingHours
         assunto: recebe um time ou nao, se nao, retornar uma execption ao sistema, informando 
@@ -75,6 +98,13 @@ class workingHours extends Model{
         /*
         Quando chamarmos uns dos metodos "insertFrom.. ou updateFrom.." que precisar ser setado no 
         atributo time1, time2... vai esta "atualizado" para uso!!!
+        */
+        /* 
+        Na primeira linha, $timeColumn recebe de geNextTime() uma string com o "time"
+        atual que deve ser atribuido, esse "time" é o atributo da classe workingHour
+        com ele esta agora em uma variável, basta utilizar o "$this" para atribuir o valor $time inserido 
+        pelo usuario no objeto atual. quando o sql for construido, o valores dos atributos vão está
+        populados
         */
         $this->$timeColumn = $time;
  
