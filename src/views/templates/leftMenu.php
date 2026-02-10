@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="monthlyReport.php">
                     <i class="icofont-ui-calendar mr-2"></i>
                     Registro Mensal
                 </a>
@@ -26,6 +26,7 @@
                     Usuarios
                 </a>
             </li>
+            <li><a href="test.php">test page</a></li>
         </ul>
     </nav>
 

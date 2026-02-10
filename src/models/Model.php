@@ -66,7 +66,7 @@ class Model{
     public static function getSelect($filters = [], $columns = '*'){
         $sql = "SELECT {$columns} FROM "
             . static::$tableName
-            . static::getFilter($filters) . ';';
+            . static::getFilter($filters) . ';'; //estrategia de flexibilização com o where 1 = 1
         
         $result = DataBase::getResultFromQuery($sql);
 
@@ -126,7 +126,12 @@ class Model{
         if (count($filters) > 0){
             $sql = " WHERE 1 = 1";
             foreach($filters as $column => $value){
-                $sql .= " AND {$column} = " . self::getFormatedValue($value);
+                //caso preciso adicionar um sql puro!
+                if ($column == 'raw') {
+                    $sql.= " AND {$value}";
+                } else {
+                    $sql .= " AND {$column} = " . self::getFormatedValue($value);
+                } 
             }
         }
 

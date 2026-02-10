@@ -2,7 +2,6 @@
 // controller configs to dayRecords
 session_start();
 requireValidSession();
-loadModel('workingHours');
 
 $dataFormated = currentTime((new DateTime())->getTimestamp());
 

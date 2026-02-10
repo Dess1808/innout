@@ -20,6 +20,14 @@ function nextDay($date){
     return $inputDate->modify('+1 day');
 }
 
+//month last day
+function getLastDayOfMonth($date) {
+    //getTimestamp serve para pegar a quantidade de horas
+    $time = getDateAsDateTime($date)->getTimestamp();
+
+    //retorno deve ser um dateTime
+    return new DateTime(date('Y-m-t', $time));
+}
 
 //date interval funcitons 
 
