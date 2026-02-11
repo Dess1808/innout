@@ -20,6 +20,15 @@ function nextDay($date){
     return $inputDate->modify('+1 day');
 }
 
+//month first day
+function getFirstDayofMonth($date) {
+    //getTimestamp serve para pegar a quantidade de horas
+    $time = getDateAsDateTime($date)->getTimestamp();
+
+    //retorno deve ser um dateTime
+    return new DateTime(date('Y-m-1', $time));
+}
+
 //month last day
 function getLastDayOfMonth($date) {
     //getTimestamp serve para pegar a quantidade de horas

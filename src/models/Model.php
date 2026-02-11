@@ -61,7 +61,6 @@ class Model{
         return $objs;
     }
 
-
     //select from database - retornando resultado sql
     public static function getSelect($filters = [], $columns = '*'){
         $sql = "SELECT {$columns} FROM "
@@ -74,6 +73,35 @@ class Model{
             return $result;
         } else {
             return null;
+        }
+    }
+
+    //filters adicionado 'AND' aos filtros
+    public static function getFilter($filters){
+        $sql = '';
+        if (count($filters) > 0){
+            $sql = " WHERE 1 = 1";
+            foreach($filters as $column => $value){
+                //caso preciso adicionar um sql puro!
+                if ($column == 'raw') {
+                    $sql.= " AND {$value}";
+                } else {
+                    $sql .= " AND {$column} = " . self::getFormatedValue($value);
+                } 
+            }
+        }
+
+        return $sql;
+    }
+
+    //values' treatment
+    public static function getFormatedValue($value){
+        if (is_null($value) || $value === ''){
+            return "null";
+        } elseif (gettype($value) === 'string'){
+            return "'{$value}'";
+        } else {
+            return $value;
         }
     }
 
@@ -116,37 +144,39 @@ class Model{
 
         $sql[strlen($sql) - 1] = ' ';
         $sql .= "WHERE user_id = {$this->user_id} AND work_date = '{$this->work_date}';";
-
+    
         DataBase::executeSQL($sql);
     }
 
-    //filters adicionado 'AND' aos filtros
-    public static function getFilter($filters){
-        $sql = '';
-        if (count($filters) > 0){
-            $sql = " WHERE 1 = 1";
-            foreach($filters as $column => $value){
-                //caso preciso adicionar um sql puro!
-                if ($column == 'raw') {
-                    $sql.= " AND {$value}";
-                } else {
-                    $sql .= " AND {$column} = " . self::getFormatedValue($value);
-                } 
+    //monthlyReport:
+    /*
+        decription: método que irá retornar o batimentos feitos pelo usuario logado no mês
+        recorrente.
+        detals: monthlyReport($userId, $date) recebe dois parametros, o $userId - id atual loga
+        e $date - data atual de acordo com o DateTime?. $firtDay e $endDay, recebendo suas datas
+        respectivamente pelas funções getFirstDayOfMonth() e getLastDayOfMonth
+    */
+    public static function getMonthlyReport($userId, $date) {
+        $registries = [];
+
+        //first and end day of the month
+        $firstDay = getFirstDayOfMonth($date)->format('Y-m-d');
+        $endDay = getLastDayOfMonth($date)->format('Y-m-d');;
+
+        $result = static::getSelect([
+            'user_id' => $userId,
+            'raw' => "work_date BETWEEN '{$firstDay}' AND '{$endDay}';"
+        ]);
+
+        if ($result) {
+            while($row = $result->fetch_assoc()) {
+                //criando novas chaves no array com as datas    
+                $registries[$row['work_date']] = new workingHours($row);
             }
         }
 
-        return $sql;
+        return $registries;
     }
 
-    //values' treatment
-    public static function getFormatedValue($value){
-        if (is_null($value) || $value === ''){
-            return "null";
-        } elseif (gettype($value) === 'string'){
-            return "'{$value}'";
-        } else {
-            return $value;
-        }
-    }
+        
 }
-
