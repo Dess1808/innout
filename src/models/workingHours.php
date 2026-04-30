@@ -107,6 +107,7 @@ class workingHours extends Model{
         populados
         */
         $this->$timeColumn = $time;
+        $this->worked_time = getSecondsFromDateInterval($this->getWorkedInterval());
  
         //if seted, update, if not, insert
         //aqui utilizando
