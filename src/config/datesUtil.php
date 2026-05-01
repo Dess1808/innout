@@ -96,3 +96,13 @@ function getDateFromInterval($interval){
 function getDateFromString($str){
     return DateTimeImmutable::createFromFormat('H:i:s', $str);
 }
+
+//get worked time
+function getSecondsFromDateInterval($interval){
+    //convertion type?
+    $d1 = new DateTimeImmutable();
+    $d2 = $d1->add($interval);
+
+    //return difference
+    return $d2->getTimestamp() - $d1->getTimestamp();
+}

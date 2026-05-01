@@ -131,7 +131,7 @@ class workingHours extends Model{
 
         //calcs
         /*
-        Description: o objetivo e calcular as diferenças dos batimentos
+        Description: o objetivo e calcular as dos batimentos
         usando a estrategia de "manha e tarde", no primeiro batimento da manhã é zerado, 
         feita a diferança no segundo batimento, pela tarde mesmo principio, o batimento da tarde 
         e "zerado", feita a diferença no ultimo batimento, que seria o quarto batimento.
