@@ -17,7 +17,7 @@
     <div class="card">
         <div class="card-header">
             <h3><?=$today?></h3>
-            <p class="mb-0">Os batimentos efeturados hoje</p>
+            <p class="mb-0">Os batimentos efetuados hoje</p>
         </div>
         <div class="card-body">
             <div class="d-flex m-2 justify-content-around">
