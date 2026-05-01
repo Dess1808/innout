@@ -1,12 +1,7 @@
 <?php
 
-loadModel('workingHours');
-
 //reset tabela workingHours
 Database::executeSQL('DELETE FROM working_hours;');
-
-//reset users 
-Database::executeSQL('DELETE FROM working_hours WHERE id > 5');
 
 function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate){
     $regularDayTemplate = [
@@ -22,7 +17,7 @@ function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate){
         'time2' => '12:00:00',
         'time3' => '13:00:00',
         'time4' => '18:00:00',
-        'worked_time' => DAILY_TIME //const de 8h em segundos, 28800s
+        'worked_time' => DAILY_TIME + 3600//const de 8h em segundos, 28800s
     ];
 
     $lazyDayTemplate = [
@@ -30,7 +25,7 @@ function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate){
         'time2' => '12:00:00',
         'time3' => '13:00:00',
         'time4' => '17:30:00',
-        'worked_time' => DAILY_TIME //const de 8h em segundos, 28800s
+        'worked_time' => DAILY_TIME - 1800//const de 8h em segundos, 28800s
     ];
 
     /*
@@ -103,3 +98,7 @@ function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate,
 
 //teste
 populationWorkingHours(1, date('Y-m-1'), 70, 20, 10);
+populationWorkingHours(2, date('Y-m-1'), 60, 30, 10);
+populationWorkingHours(3, date('Y-m-1'), 25, 75, 5);
+populationWorkingHours(4, date('Y-m-1'), 70, 10, 20);
+echo "datas generated!" . PHP_EOL;
