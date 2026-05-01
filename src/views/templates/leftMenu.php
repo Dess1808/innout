@@ -27,6 +27,7 @@
                 </a>
             </li>
             <li><a href="test.php">test page</a></li>
+            <li><a href="dataGenerator.php">Data Generator</a></li>
         </ul>
     </nav>
 
