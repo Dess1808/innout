@@ -1,2 +1,2 @@
 <?php
-print_r($registries);
+echo $balance;

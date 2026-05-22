@@ -97,3 +97,16 @@ function getSecondsFromDateInterval($interval){
     //return difference
     return $d2->getTimestamp() - $d1->getTimestamp();
 }
+
+//verify date
+function isPastWorkedDay($date){
+    return !isWeekend($date) && isBefore($date, new DateTime());
+}
+
+//get and format hours, minute and second
+function getTimeStringFromSeconds($seconds){
+    $h = intdiv($seconds, 3600);
+    $m = intdiv($seconds / 3600, 60);
+    $s = $seconds - ($seconds * 3600) - ($m * 60);
+    return sprintf("%02d:%02d:%02d", $h, $m, $s);
+}
