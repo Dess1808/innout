@@ -97,8 +97,8 @@ function populationWorkingHours($userId, $initialDate, $regularRate, $extraRate,
 //testar com "mes passado"
 
 //teste
-populationWorkingHours(1, date('Y-m-1'), 70, 20, 10);
-populationWorkingHours(2, date('Y-m-1'), 60, 30, 10);
+populationWorkingHours(1, date('Y-m-1'), 80, 10, 10);
+populationWorkingHours(2, date('Y-m-1'), 90, 5, 5);
 populationWorkingHours(3, date('Y-m-1'), 25, 75, 5);
-populationWorkingHours(4, date('Y-m-1'), 70, 10, 20);
+populationWorkingHours(4, date('Y-m-1'), 65, 15, 20);
 echo "datas generated!" . PHP_EOL;

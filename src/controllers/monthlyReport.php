@@ -17,12 +17,17 @@ $lastDay = getLastDayOfMonth($currentDate)->format('d'); //month only day
 //get by date
 for ($day = 1; $day <= $lastDay; $day++){
     $date = $currentDate->format('Y-m') . "-" . sprintf("%02d", $day);
-    $registry = $registries[$date]; //verificar Undefined Key!!!!!
 
+    if (isset($registries[$date])){
+        $registry = $registries[$date]; //verificar Undefined Key!!!!!
+    } else {
+        $registry = null;
+    }
+        
     //workday count, retornando uma data válida
     if (isPastWorkedDay($date)) $workDay++; //um dia válido
 
-    if($registry){
+    if(isset($registry)){
         $sumWorkedOfTime += $registry->worked_time;
         array_push($report, $registry);
     } else {
@@ -33,10 +38,11 @@ for ($day = 1; $day <= $lastDay; $day++){
     }
 }
 
+
 //calc worked time
 $expectedTime = $workDay * DAILY_TIME;
-$balance = getTimeStringFromSeconds($expectedTime - $sumWorkedOfTime);
-$sign = $sumWorkedOfTime >= $expectedTime ? '+' : '-';
+$balance = getTimeStringFromSeconds(abs($sumWorkedOfTime - $expectedTime));
+$sign = ($sumWorkedOfTime >= $expectedTime) ? '+' : '-';
 
 loadTemplateView('monthlyReport', [
     'report' => $report,
