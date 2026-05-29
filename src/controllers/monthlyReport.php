@@ -33,6 +33,10 @@ for ($day = 1; $day <= $lastDay; $day++){
     } else {
         array_push($report, new WorkingHours([
             'work_date' => $date,
+            'time1' => null,
+            'time2' => null,
+            'time3' => null,
+            'time4' => null,
             'worked_time' => 0
         ]));
     }

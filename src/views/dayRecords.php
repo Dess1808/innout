@@ -23,7 +23,7 @@
             <div class="d-flex m-2 justify-content-around">
                 <span class="record-text">Entrada 1: <?= $workingHours->time1 ?? '---'?></span>
                 <span class="record-text">Saida 1: <?= $workingHours->time2 ?? '---'?></span>
-            </div>
+            </div> 
             <div class="d-flex m-2 justify-content-around">
                 <span class="record-text">Entrada 2: <?= $workingHours->time3 ?? '---'?></span>
                 <span class="record-text">Saida 2: <?= $workingHours->time4 ?? '---'?></span>
