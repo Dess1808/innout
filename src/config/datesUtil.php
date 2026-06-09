@@ -101,12 +101,19 @@ function getSecondsFromDateInterval($interval){
 //verify date
 function isPastWorkedDay($date){
     return !isWeekend($date) && isBefore($date, new DateTime());
-}
+} 
 
-//get and format hours, minute and second
+//get worked_time and transform to hours, minute and second
 function getTimeStringFromSeconds($seconds){
     $h = intdiv($seconds, 3600);
     $m = intdiv($seconds % 3600, 60);
     $s = $seconds - ($h * 3600) - ($m * 60);
     return sprintf('%02d:%02d:%02d', $h, $m, $s);
 }
+
+//times from locale
+function dateFormettedWithLocal($date, $pattern){
+    $dateStamp = getDateAsDateTime($date)->getTimestamp();
+    return currentTime($dateStamp, $pattern);
+}
+
