@@ -59,7 +59,7 @@ function renderMessagens() {
 }
 
 //current time
-function currentTime($date){
+function currentTime($date, $stringFormatted){
     //moderno e com set linguagem
     $formatted = new IntlDateFormatter(
         'pt_BR', //linguagem
@@ -67,7 +67,7 @@ function currentTime($date){
         IntlDateFormatter::NONE, //hora
         'America/Manaus', //local
         IntlDateFormatter::GREGORIAN, //calendario
-        "d 'de' MMMM 'de' yyyy" //string format
+        $stringFormatted //string format
     );
 
     return $formatted->format($date);
