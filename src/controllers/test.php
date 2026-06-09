@@ -1,17 +1,32 @@
 <?php
+//functionaly test, select fitler year
 
-//controller of test
+session_start();
+requireValidSession();
 
-//s$wh = workingHours::loadFromUserDate(4, date('Y-m-d'));
-/*$interval = $wh->getWorkedInterval();
-print_r($interval->format('%H:%I:%S'));
-echo '<br>';
-$lunch = $wh->getLunchInterval();
-print_r($lunch->format('%H:%I:%S'));
-echo '<br>';
-print_r($wh->getExitTime());*/
+$currentTime = new DateTime();
 
-$wh = workingHours::getMonthlyReport(4, '2026-02-11');
-print_r($wh);
+$selectedPeriod = isset($_POST['period']) ? $_POST['period'] : $currentTime->format('Y-m');
+$periods = [];
+for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
+    $year = date('Y') - $yearDiff;
+    for ($month = 1; $month <= 12; $month++){
+        $date = new DateTime("{$year}-{$month}-1");
+        $periods[$date->format("Y-m")] = ucfirst(currentTime($date->getTimestamp(), "MMMM 'de' yyy"));
+    }
+}
+
+print_r($periods);
+?>
+
+<form action="POST">
+    <select name="period" placeholder="select the period...">
+        <?php
+            foreach($periods as $key => $value){
+                echo "<option value='{$key}'>{$value}</option>";
+            }
+        ?>
+    </select>
+</form>
 
 
