@@ -5,6 +5,18 @@ requireValidSession();
 $currentDate = new DateTime();
 
 $user = $_SESSION['user']; 
+
+//select's filter years
+$selectedPeriod = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m'); //send to dataBase
+$period = [];
+for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
+    $year = date('Y') - $yearDiff;
+    for ($month = 1; $month <= 12; $month++){
+        $date = new DateTime("{$year}-{$month}-1");
+        $period[$date->format('Y-m')] = ucfirst(currentTime($date->getTimestamp(), "MMMM 'de' yyyy"));
+    }
+}
+
 //informamos o id do usuario logado e uma data atual do relogio
 $registries = workingHours::getMonthlyReport($user->id, new DateTime());
 
@@ -51,7 +63,8 @@ $sign = ($sumWorkedOfTime >= $expectedTime) ? '+' : '-';
 loadTemplateView('monthlyReport', [
     'report' => $report,
     'sumWorkedOfTime' => $sumWorkedOfTime,
-    'balance' => "{$sign}{$balance}"
+    'balance' => "{$sign}{$balance}",
+    'period' => $period
 ]);
 
 
