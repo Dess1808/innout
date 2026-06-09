@@ -3,7 +3,7 @@
 session_start();
 requireValidSession();
 
-$dataFormated = currentTime((new DateTime())->getTimestamp());
+$dataFormated = currentTime((new DateTime())->getTimestamp(), "d 'de' MMMM 'de' yyyy");
 
 //id informations
 $user = $_SESSION['user'];
