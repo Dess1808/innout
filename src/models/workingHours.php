@@ -198,4 +198,25 @@ class workingHours extends Model{
 
         return $time;
     }
+
+    //get balance day's hours worked
+    function getBalance(){
+        //time1 it wasn't inicilized and worked's date isn't a valid
+        if (!$this->time1 && !isPastWorkedDay($this->work_date)) return '';  
+
+        $balance = $this->worked_time - DAILY_TIME;
+        $balanceString = getTimeStringFromSeconds(abs($balance));
+        $sing = '';
+
+        if ($this->worked_time > DAILY_TIME)
+            $sing  = '+';
+        elseif ($this->worked_time < DAILY_TIME)
+            $sing = '-';
+        else
+            $balanceString = '--';
+
+        return "{$sing}{$balanceString}";
+    }
 }
+
+
