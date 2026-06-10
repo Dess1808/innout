@@ -1,13 +1,18 @@
 <?php
 session_start();
 requireValidSession();
-
 $currentDate = new DateTime();
-
 $user = $_SESSION['user']; 
 
+//select's filter user
+$users = null;
+if ($user->is_admin){
+    $users = User::getResultFromDataBase();
+}
+
+
 //select's filter years
-$selectedPeriod = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m'); //send to dataBase
+$selectedPeriodPost = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m'); //send to dataBase
 $period = [];
 for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
     $year = date('Y') - $yearDiff;
@@ -24,14 +29,15 @@ $registries = workingHours::getMonthlyReport($user->id, new DateTime());
 $report = [];
 $workDay = 0;
 $sumWorkedOfTime = 0;
-$lastDay = getLastDayOfMonth($currentDate)->format('d'); //month only day
+$selectedPeriod = new DateTime("{$selectedPeriodPost}-1");
+$lastDay = getLastDayOfMonth($selectedPeriod)->format('d'); //month only day
 
 //get by date
 for ($day = 1; $day <= $lastDay; $day++){
-    $date = $currentDate->format('Y-m') . "-" . sprintf("%02d", $day);
+    $date = $selectedPeriod->format('Y-m') . "-" . sprintf("%02d", $day);
 
     if (isset($registries[$date])){
-        $registry = $registries[$date]; //verificar Undefined Key!!!!!
+        $registry = $registries[$date];
     } else {
         $registry = null;
     }
@@ -64,7 +70,8 @@ loadTemplateView('monthlyReport', [
     'report' => $report,
     'sumWorkedOfTime' => $sumWorkedOfTime,
     'balance' => "{$sign}{$balance}",
-    'period' => $period
+    'period' => $period,
+    'users' => $users
 ]);
 
 

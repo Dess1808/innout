@@ -8,14 +8,27 @@
     ?>
 
     <div>
+        <!-- Filters -->
         <form action="#" class="mb-4" method="POST">
-            <select name="period" class="form-control" placeholder="select the period...">
-                <?php
-                    foreach($period as $key => $value){
-                        echo "<option value='{$key}'>$value</option>";
-                    }
-                ?>
-            </select>
+             <div class="input-group">
+                <select name="users" class="form-control mr-2" placeholder="select the user...">
+                    <?php
+                        foreach($users as $user){
+                            echo "<option value='{$user->id}'>$user->name</option>";
+                        }
+                    ?>
+                </select>
+                <select name="period" class="form-control" placeholder="select the period...">
+                    <?php
+                        foreach($period as $key => $value){
+                            echo "<option value='{$key}'>$value</option>";
+                        }
+                    ?>
+                </select>
+                <button class="btn btn-primary ml-2">
+                    <i class="icofont-search"></i>
+                </button>
+             </div>
         </form>
 
         <table class="table table-bordered table-striped table-hover">
