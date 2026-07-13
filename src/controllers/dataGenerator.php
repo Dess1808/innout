@@ -101,4 +101,5 @@ populationWorkingHours(1, date('Y-m-1'), 80, 10, 10);
 populationWorkingHours(2, date('Y-m-1'), 90, 5, 5);
 populationWorkingHours(3, date('Y-m-1'), 25, 75, 5);
 populationWorkingHours(4, date('Y-m-1'), 65, 15, 20);
+populationWorkingHours(5, date('Y-m-1'), 80, 15, 5);
 echo "datas generated!" . PHP_EOL;

@@ -2,17 +2,20 @@
 session_start();
 requireValidSession();
 $currentDate = new DateTime();
+
 $user = $_SESSION['user']; 
+$selectedUserId = $user->id;
 
 //select's filter user
 $users = null;
 if ($user->is_admin){
     $users = User::getResultFromDataBase();
+    $selectedUserId = isset($_POST['user']) ? $_POST['user'] : $user->id; 
 }
 
-
 //select's filter years
-$selectedPeriodPost = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m'); //send to dataBase
+$selectedPeriodPost = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m'); 
+
 $period = [];
 for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
     $year = date('Y') - $yearDiff;
@@ -23,7 +26,7 @@ for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--){
 }
 
 //informamos o id do usuario logado e uma data atual do relogio
-$registries = workingHours::getMonthlyReport($user->id, new DateTime());
+$registries = workingHours::getMonthlyReport($selectedUserId, $selectedPeriodPost);
 
 //calc workday hour
 $report = [];
@@ -71,7 +74,9 @@ loadTemplateView('monthlyReport', [
     'sumWorkedOfTime' => $sumWorkedOfTime,
     'balance' => "{$sign}{$balance}",
     'period' => $period,
-    'users' => $users
+    'selectedPeriodPost' => $selectedPeriodPost,
+    'users' => $users,
+    'selectedUserId' => $selectedUserId
 ]);
 
 

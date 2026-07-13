@@ -11,17 +11,23 @@
         <!-- Filters -->
         <form action="#" class="mb-4" method="POST">
              <div class="input-group">
-                <select name="users" class="form-control mr-2" placeholder="select the user...">
-                    <?php
-                        foreach($users as $user){
-                            echo "<option value='{$user->id}'>$user->name</option>";
-                        }
-                    ?>
-                </select>
+                <!-- USERS -->
+                <?php if ($user->is_admin) :?>
+                    <select name="user" class="form-control mr-2" placeholder="select the user...">
+                        <?php
+                            foreach($users as $user){
+                                $selected = $user->id === $selectedUserId ? 'selected' : '';
+                                echo "<option value='{$user->id}' {$selected}>$user->name</option>";
+                            }
+                        ?>
+                    </select>
+                <?php endif?>
+                <!-- PERIODS -->
                 <select name="period" class="form-control" placeholder="select the period...">
                     <?php
                         foreach($period as $key => $value){
-                            echo "<option value='{$key}'>$value</option>";
+                            $selected = $key === $selectedPeriodPost ? 'selected' : '';
+                            echo "<option value='{$key}' {$selected}>$value</option>";
                         }
                     ?>
                 </select>
