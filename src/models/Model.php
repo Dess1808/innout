@@ -178,5 +178,11 @@ class Model{
         return $registries;
     }
 
-        
+    //
+    /*All user return with filters*/
+    public static function getCount($filters = []){
+        //retorna um objto com um atributo chamado "count"
+        $result = static::getResultFromDataBaseOnly($filters, 'count(*) AS count');
+        return $result;
+    }      
 }

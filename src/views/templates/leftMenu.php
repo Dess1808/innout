@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="managerReport.php">
                     <i class="icofont-chart-histogram mr-2"></i>
                     Relatorio Gerencial
                 </a>

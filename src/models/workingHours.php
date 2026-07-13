@@ -217,6 +217,22 @@ class workingHours extends Model{
 
         return "{$sing}{$balanceString}";
     }
+
+    //getAbsentUser()
+    /* 
+        Retornar todos os usuarios ausentes do dia!
+    */
+    public static function getAbsentUsers(){
+        $today = new DateTime();
+        $result = Database::getResultFromQuery("
+            SELECT name FROM users WHERE end_date IS NULL AND id NOT IN (
+                SELECT user_id FROM working_hours WHERE work_date = '{$today->format('Y-m-d')}' 
+                AND time1 IS NOT NULL)
+        ");
+
+        $absentUsers = [];
+        //continuar
+    }
 }
 
 
