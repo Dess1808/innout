@@ -231,8 +231,32 @@ class workingHours extends Model{
         ");
 
         $absentUsers = [];
-        //continuar
+        if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                array_push($absentUsers, $row['name']);
+            }
+        }
+
+        return $absentUsers;
     }
+
+    //getWorkedTimeInMonth($month)
+    /*
+        Retorna a soma do todas as horas trabalhadas de todos os funcionarios
+    */
+    public static function getWorkedTimeMonth($yearAndMonth){
+        $startDate = getFirstDayofMonth($yearAndMonth)->format('Y-m-d');
+        $endDate = getLastDayOfMonth($yearAndMonth)->format('Y-m-d');
+
+        //SQL query
+        $result = static::getResultFromDataBaseOnly([
+            'raw' => "work_date BETWEEN '{$startDate}' AND '{$endDate}'" 
+        ], "SUM(worked_time) AS sum");
+
+        return $result->sum;
+    }
+
+    //pegar a quantidade de usuários ativos dentro do sistem1!!! continuar
 }
 
 

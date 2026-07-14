@@ -1,2 +1,2 @@
 <?php
-echo print_r(User::getCount());
+var_dump(WorkingHours::getWorkedTimeMonth('2026-07'));
