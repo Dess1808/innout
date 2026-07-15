@@ -255,8 +255,6 @@ class workingHours extends Model{
 
         return $result->sum;
     }
-
-    //pegar a quantidade de usuários ativos dentro do sistem1!!! continuar
 }
 
 
