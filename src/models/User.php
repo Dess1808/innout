@@ -12,12 +12,11 @@ class User extends Model {
         'is_admin'       
     ];   
 
-    //getCountUsers()
+    //getActiveUsersCount()
     /*
         Return count all users
     */
-    public static function getCountUsers($column){
-        $result = static::getResultFromDataBaseOnly($filter = [], $column);
-        return $result;
+    public static function getActiveUsersCount(){
+        return $activeUsers = static::getCount(['raw' => 'end_date IS NULL']);
     }
 }

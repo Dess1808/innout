@@ -1,2 +1,2 @@
 <?php
-var_dump(User::getCountUsers("COUNT(*)"));
+echo User::getActiveUsersCount();
