@@ -29,6 +29,25 @@
     </div>
 
     <!-- Card absent users -->
-     
-</main>
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="card-title">Faltosos do dia</h4>
+            <div class="card-category">Relação de funcionários que não bateram o ponto</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bodered table-striped table-hover">
+                <thead>
+                    <th>Nome</th>
+                </thead>
+                <tbody>
+                    <?php foreach($absentUsers as $name):?>
+                        <tr>
+                            <td><?=$name?></td>
+                        </tr>
+                    <?php endforeach ?>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main> 
 
