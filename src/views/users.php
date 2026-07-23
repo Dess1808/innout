@@ -6,7 +6,7 @@
             'icofont-users'
         );
 
-        renderMessagens();
+        include(TEMPLATE_PATH . "/messagens.php");
     ?>
 
     <!-- CADATRAR NOVO USUÁRIO -->
