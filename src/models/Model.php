@@ -6,12 +6,12 @@ class Model{
     protected static $columns = [];
     protected $values = [];
 
-    function __construct($arr) {
+    function __construct(array $arr) {
         $this->loadFromArray($arr);
     }
 
     //percorrendo o array personalizado e setando no array values
-    public function loadFromArray($arr){
+    public function loadFromArray(array $arr){
         if ($arr){
             //pegando chave e valor do array associativo $arr
             foreach($arr as $key => $value){
@@ -77,7 +77,7 @@ class Model{
     }
 
     //filters adicionado 'AND' aos filtros
-    public static function getFilter($filters){
+    public static function getFilter(array $filters){
         $sql = '';
         if (count($filters) > 0){
             $sql = " WHERE 1 = 1";
@@ -156,7 +156,7 @@ class Model{
         e $date - data atual de acordo com o DateTime?. $firtDay e $endDay, recebendo suas datas
         respectivamente pelas funções getFirstDayOfMonth() e getLastDayOfMonth
     */
-    public static function getMonthlyReport($userId, $date) {
+    public static function getMonthlyReport(int $userId, string $date) {
         $registries = [];
 
         //first and end day of the month

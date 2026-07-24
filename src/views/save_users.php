@@ -1,7 +1,7 @@
 <main class="content">
     <?php
         renderTitle(
-            'Cadastro de Usuários',
+            'Cadastro de Usuário',
             'Crie e atualize um usuários',
             'icofont-user'
         );

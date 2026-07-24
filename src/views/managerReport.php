@@ -12,7 +12,7 @@
         <div class="summary-box bg-primary">
             <i class="icon icofont-users"></i>
             <p class="title">Qtd de funcionários</p>
-            <h3 class="value"><?=$activeUsers?></h3>
+            <h3 class="value"><?= isset($activeUsers) ? $activeUsers : ''?></h3>
         </div>
         <!-- ABSENT USERS -->
         <div class="summary-box bg-danger">

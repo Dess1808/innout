@@ -21,10 +21,10 @@
             <th>Ações</th>
         </thead>
         <tbody>
-            <?php foreach($users as $user): ?>
+            <?php foreach(isset($users) ? $users : [] as $user): ?>
                 <tr>
                     <td><?=$user->name?></td>
-                    <td><?=$user->name?></td>
+                    <td><?=$user->email?></td>
                     <td><?=$user->start_date?></td>
                     <td><?=$user->end_date?></td>
                     <td>

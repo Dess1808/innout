@@ -19,4 +19,17 @@ class User extends Model {
     public static function getActiveUsersCount(){
         return $activeUsers = static::getCount(['raw' => 'end_date IS NULL']);
     }
+
+    //insertFromDataGenerator
+    /*
+        override insert... tratament(is_admin and end_date))
+    */
+    public function insertFromDataGenerator() {
+        //converting to 'number'
+        $this->is_admin = $this->is_admin ? 1 : 0;
+        if (!$this->end_date) $this->end_date = null;
+
+        return parent::insertFromDataGenerator();
+    }
+
 }
