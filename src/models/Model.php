@@ -185,4 +185,10 @@ class Model{
         $result = static::getResultFromDataBaseOnly($filters, 'count(*) AS count');
         return $result->count;
     }      
+
+    //deleteUserById()
+    public static function deleteUserById(int $id){
+        $sql = "DELETE FROM " . static::$tableName . " WHERE id = {$id}";
+        DataBase::executeSQL($sql);
+    }
 }
