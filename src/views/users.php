@@ -10,7 +10,7 @@
     ?>
 
     <!-- CADATRAR NOVO USUÁRIO -->
-    <a href="save_users.php" class="btn btn-lg btn-primary">Novo Usuário</a>
+    <a href="save_users.php" class="btn btn-lg btn-primary mb-4">Novo Usuário</a>
 
     <table class="table">
         <thead>
