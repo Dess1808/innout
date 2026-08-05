@@ -1,4 +1,5 @@
 <main class="content">
+    
     <?php 
         renderTitle(
             'Cadastro de Usuários',
@@ -31,12 +32,26 @@
                         <a href="save_users?update=<?=$user->id?>" class="btn btn-warning rounded-circle mr-2">
                             <i class="icofont-edit"></i>
                         </a>
-                        <a href="?delete=<?=$user->id?>" class="btn btn-danger rounded-circle">
+                        <!-- <a href="?delete=" class="btn btn-danger rounded-circle">
                             <i class="icofont-trash"></i>
-                        </a>
+                        </a> -->
+                        <button class="button-delete btn btn-danger rounded-circle">
+                                <i class="icofont-trash"></i>
+                        </button>
+                        
                     </td>
                 </tr>
             <?php endforeach ?>
+            <!-- verificar aplicação de modal para todos os usuários!!! -->
+            <dialog class="modal-delete">
+                <p>Deseja excluir <?= $user->name ?>?</p>
+                <button class="button-confirm">
+                    <a href="?delete=<?=$user->id?>">Confirmar</a>
+                </button>
+                <button class="button-cancel">Cancelar</button>
+            </dialog>
         </tbody>
     </table>
+
+   <script src="assets/js/buttonDelete.js"></script>
 </main>
