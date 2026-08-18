@@ -1,12 +1,20 @@
 const modalDelete = document.querySelector('.modal-delete')
-const buttonCancel = document.querySelector('.button-cancel')
-const buttonDelete = document.querySelector('.button-delete')
 
-buttonDelete.addEventListener('click', () => {
-    modalDelete.showModal()
+document.querySelectorAll('.button-delete').forEach(elements => {
+    elements.addEventListener('click', () => {
+        document.getElementById('name-delete').textContent = elements.dataset.nome
+        
+        const linkGet = document.getElementById('link-get')
+        linkGet.setAttribute('href', '?delete=' + elements.dataset.id)
+        
+        modalDelete.showModal()       
+    })
 })
 
-buttonCancel.addEventListener('click', () => {
+document.querySelector('.button-cancel').addEventListener('click', () => {
     modalDelete.close()
 })
+
+
+
 

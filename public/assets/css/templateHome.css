@@ -271,3 +271,15 @@ footer.footer {
 .summary-box .value {
     font-size: 2rem;
 }
+
+/* MODAL delete STYLE - user css */
+.modal-delete .button-confirm a{
+    text-decoration: none;
+    color: black;
+}
+
+.modal-delete .button-confirm :hover{
+    background-color: red;
+    color: #fff;
+}
+

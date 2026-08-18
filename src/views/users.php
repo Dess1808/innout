@@ -13,7 +13,7 @@
     <!-- CADATRAR NOVO USUÁRIO -->
     <a href="save_users.php" class="btn btn-lg btn-primary mb-4">Novo Usuário</a>
 
-    <table class="table">
+    <table class="table table-striped table-hover">
         <thead>
             <th>Nome</th>
             <th>Email</th>
@@ -35,23 +35,26 @@
                         <!-- <a href="?delete=" class="btn btn-danger rounded-circle">
                             <i class="icofont-trash"></i>
                         </a> -->
-                        <button class="button-delete btn btn-danger rounded-circle">
+                        <button 
+                            class="button-delete btn btn-danger rounded-circle"
+                            data-id="<?= $user->id ?>"
+                            data-nome="<?= $user->name ?>">
                                 <i class="icofont-trash"></i>
                         </button>
-                        
                     </td>
                 </tr>
             <?php endforeach ?>
-            <!-- verificar aplicação de modal para todos os usuários!!! -->
-            <dialog class="modal-delete">
-                <p>Deseja excluir <?= $user->name ?>?</p>
-                <button class="button-confirm">
-                    <a href="?delete=<?=$user->id?>">Confirmar</a>
-                </button>
-                <button class="button-cancel">Cancelar</button>
-            </dialog>
         </tbody>
     </table>
+
+    <!-- Modal DELETE -->         
+    <dialog class="modal-delete">
+        <p>Deseja excluir <strong id="name-delete"></strong>?</p>
+        <button class="button-confirm">
+            <a id="link-get" href="#">Confirmar</a>
+        </button>
+        <button class="button-cancel">Cancelar</button>
+    </dialog>
 
    <script src="assets/js/buttonDelete.js"></script>
 </main>
