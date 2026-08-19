@@ -273,13 +273,27 @@ footer.footer {
 }
 
 /* MODAL delete STYLE - user css */
-.modal-delete .button-confirm a{
-    text-decoration: none;
-    color: black;
+.modal-delete::backdrop {
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.modal-delete {
+    border: none;
+    border-radius: 10px;
+    padding: 30px 30px;
 }
 
 .modal-delete .button-confirm :hover{
     background-color: red;
     color: #fff;
+}
+
+.modal-delete .button-confirm a{
+    text-decoration: none;
+    color: black;
+}
+
+.modal-delete .button-cancel {
+    cursor: pointer;
 }
 

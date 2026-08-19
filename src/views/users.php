@@ -50,7 +50,7 @@
     <!-- Modal DELETE -->         
     <dialog class="modal-delete">
         <p>Deseja excluir <strong id="name-delete"></strong>?</p>
-        <button class="button-confirm">
+        <button class="button-confirm ">
             <a id="link-get" href="#">Confirmar</a>
         </button>
         <button class="button-cancel">Cancelar</button>
