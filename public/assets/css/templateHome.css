@@ -283,11 +283,6 @@ footer.footer {
     padding: 30px 30px;
 }
 
-.modal-delete .button-confirm :hover{
-    background-color: red;
-    color: #fff;
-}
-
 .modal-delete .button-confirm a{
     text-decoration: none;
     color: black;
