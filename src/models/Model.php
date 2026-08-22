@@ -6,17 +6,24 @@ class Model{
     protected static $columns = [];
     protected $values = [];
 
-    function __construct(array $arr) {
-        $this->loadFromArray($arr);
+    function __construct(array $arr, $sanitize = true) {
+        $this->loadFromArray($arr, $sanitize);
     }
 
     //percorrendo o array personalizado e setando no array values
-    public function loadFromArray(array $arr){
+    public function loadFromArray(array $arr, $sanitize = true){
         if ($arr){
             //pegando chave e valor do array associativo $arr
             foreach($arr as $key => $value){
+                //sanitizando antes de inserir no banco!!!
+                $cleanValues = $value;
+                if ($sanitize && isset($cleanValues)){
+                    $cleanValues = strip_tags((trim($cleanValues)));
+                    $cleanValues = htmlentities($cleanValues, ENT_NOQUOTES);
+                }
+
                 //magic methods
-                $this->$key = $value;
+                $this->$key = $cleanValues;
             }
         }
     }
