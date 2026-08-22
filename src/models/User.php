@@ -20,10 +20,7 @@ class User extends Model {
         return $activeUsers = static::getCount(['raw' => 'end_date IS NULL']);
     }
 
-    //insertFromDataGenerator
-    /*
-        override insert... tratament(is_admin and end_date))
-    */
+    //inset user specific tratement
     public function insertFromDataGenerator() {
         //converting to 'number'
         $this->validateRegister();
@@ -35,6 +32,20 @@ class User extends Model {
 
         //chamando insertFromDataGenerator() pai para inseriro no banco
         return parent::insertFromDataGenerator();
+    }
+
+    //update user specific tratements
+    public function updateFromDataGenerator(){
+        //converting to 'number'
+        $this->validateRegister();
+        $this->is_admin = $this->is_admin ? 1 : 0;
+        if (!$this->end_date) $this->end_date = null;
+
+        //criptrography password
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+
+        //chamando updateFromDataFenerator() pai para inseriro no banco
+        return parent::updateFromDataGenerator();
     }
 
     //validations form

@@ -10,6 +10,7 @@
     ?>
 
     <form action="#" method="post">
+        
         <!-- NAME AND EMAIL -->
         <div class="form-row">
             <div class="form-group col-md-6">

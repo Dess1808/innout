@@ -29,12 +29,9 @@
                     <td><?=$user->start_date?></td>
                     <td><?=$user->end_date?></td>
                     <td>
-                        <a href="save_users?update=<?=$user->id?>" class="btn btn-warning rounded-circle mr-2">
+                        <a href="save_users.php?update=<?=$user->id?>" class="btn btn-warning rounded-circle mr-2">
                             <i class="icofont-edit"></i>
                         </a>
-                        <!-- <a href="?delete=" class="btn btn-danger rounded-circle">
-                            <i class="icofont-trash"></i>
-                        </a> -->
                         <button 
                             class="button-delete btn btn-danger rounded-circle"
                             data-id="<?= $user->id ?>"
