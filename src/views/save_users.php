@@ -17,7 +17,7 @@
                 <label for="name">Nome</label>
                 <input type="text" name="name" id="name"
                 placeholder="Informe seu nome"
-                value="<?= isset($user->name) ? $user->name : '' ?>"
+                value="<?= isset($name) ? $name : '' ?>"
                 class="form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['name']) ? $errors['name'] : '' ?>
@@ -27,7 +27,7 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email"
                 placeholder="Informe seu email"
-                value="<?= isset($user->email) ? $user->email : '' ?>"
+                value="<?= isset($email) ? $email : '' ?>"
                 class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['email']) ? $errors['email'] : '' ?>
@@ -40,8 +40,8 @@
             <div class="form-group col-md-6">
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password"
-                value="<?= isset($user->password) ? $user->password : '' ?>"
-                class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
+                value="<?= isset($password) ? $password : '' ?>"
+                class="form-contr                <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['password']) ? $errors['password'] : '' ?>
                 </div>
