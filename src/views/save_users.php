@@ -41,7 +41,7 @@
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password"
                 value="<?= isset($password) ? $password : '' ?>"
-                class="form-contr                <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
+                class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['password']) ? $errors['password'] : '' ?>
                 </div>
@@ -49,7 +49,7 @@
             <div class="form-group col-md-6">
                 <label for="confirm_password">Confirme a senha</label>
                 <input type="password" name="confirm_password" id="confirm_password"
-                value="<?= isset($user->password) ? $user->password : '' ?>"
+                value="<?= isset($confirm_password) ? $confirm_password : '' ?>"
                 class="form-control <?= isset($errors['confirm_password']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['confirm_password']) ? $errors['confirm_password'] : '' ?>
@@ -62,7 +62,7 @@
             <div class="form-group col-md-6">
                 <label for="start_date">Data de admissão</label>
                 <input type="date" name="start_date" id="start_date"
-                value="<?= isset($user->start_date) ? $user->start_date : '' ?>"
+                value="<?= isset($start_date) ? $start_date : '' ?>"
                 class="form-control <?= isset($errors['start_date']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['start_date']) ? $errors['start_date'] : '' ?>
@@ -71,7 +71,7 @@
             <div class="form-group col-md-6">
                 <label for="end_date">Data do desligamento</label>
                 <input type="date" name="end_date" id="end_date"
-                value="<?= isset($user->end_date) ? $user->end_date : '' ?>"
+                value="<?= isset($end_date) ? $end_date : '' ?>"
                 class="form-control <?= isset($errors['end_date']) ? 'is-invalid' : '' ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['end_date']) ? $errors['end_date'] : '' ?>

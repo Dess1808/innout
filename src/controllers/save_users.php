@@ -4,6 +4,8 @@ requireValidSession();
 
 $exception = null;
 
+var_dump($_POST);
+
 if(count($_POST) > 0){
     try {
         $newUser = new User($_POST);

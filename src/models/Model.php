@@ -38,6 +38,10 @@ class Model{
         $this->values[$key] = $value;
     }
 
+    //get Values
+    public function getValues(){
+        return $this->values;
+    }
 
     //-- specific methods
 
